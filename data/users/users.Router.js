@@ -13,4 +13,28 @@ router.get("/", (req, res) => {
     });
 });
 
+router.post("/", (req, res) => {
+  const newUser = req.body;
+
+  db.addUser(newUser)
+    .then(user => {
+      res.status(200).json(user);
+    })
+    .catch(error => {
+      res.status(500).json(error);
+    });
+});
+
+router.delete("/:id", (req, res) => {
+  const id = req.params.id;
+
+  db.deleteUser(id)
+    .then(user => {
+      res.status(204).json(user);
+    })
+    .catch(error => {
+      res.status(500).json(error);
+    });
+});
+
 module.exports = router;
