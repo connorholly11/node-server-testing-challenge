@@ -43,4 +43,25 @@ describe("users model", () => {
     allUsers = await db("users");
     expect(allUsers).toHaveLength(0);
   });
+
+  test("should insert 2 users and delete id 1", async () => {
+    let allUsers = await db("users");
+    let user = await Users.addUser({
+      username: "unique 2",
+      password: "pass 1"
+    });
+    expect(user.username).toBe("unique 2");
+
+    user = await Users.addUser({ username: "unique 3", password: "pass 2" });
+    expect(user.username).toBe("unique 3");
+
+    allUsers = await db("users");
+    expect(allUsers).toHaveLength(2);
+
+    await Users.deleteUser("1", "=", 1);
+    allUsers = await db("users");
+    expect(allUsers).toHaveLength(1);
+
+    expect(user.username).toBe("unique 3");
+  });
 });
