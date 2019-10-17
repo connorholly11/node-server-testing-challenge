@@ -10,10 +10,16 @@ function getUsers() {
   return db("users");
 }
 
-function addUser(newUser) {
-  return null;
+async function addUser(newUser) {
+  const [id] = await db("users").insert(newUser);
+
+  return db("users")
+    .where({ id })
+    .first();
 }
 
-function deleteUser() {
-  return null;
+function deleteUser(id) {
+  return db("users")
+    .where("id", "=", id)
+    .del();
 }
