@@ -1,30 +1,36 @@
 {
-  "name": "node-server-testing",
+  "name": "node-server-testing-challenge",
   "version": "1.0.0",
-  "description": "Node Server Testing Challenge",
-  "main": "server.js",
+  "description": "## Topics",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "knex": "^0.19.5",
+    "sqlite3": "^4.1.0"
+  },
+  "devDependencies": {
+    "cross-env": "^6.0.3",
+    "jest": "^24.9.0",
+    "nodemon": "^1.19.3",
+    "supertest": "^4.0.2"
+  },
   "scripts": {
-    "test": "jest --watch"
+    "test": "cross-env DB_ENV=testing jest --watch",
+    "server": "nodemon index.js",
+    "start": "node server.js"
   },
   "jest": {
     "testEnvironment": "node"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LambdaSchool/node-server-testing.git"
+    "url": "git+https://github.com/connorholly11/node-server-testing-challenge.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/LambdaSchool/node-server-testing/issues"
+    "url": "https://github.com/connorholly11/node-server-testing-challenge/issues"
   },
-  "homepage": "https://github.com/LambdaSchool/node-server-testing#readme",
-  "devDependencies": {
-    "jest": "^24.9.0",
-    "supertest": "^4.0.2"
-  },
-  "dependencies": {
-    "express": "^4.17.1"
-  }
+  "homepage": "https://github.com/connorholly11/node-server-testing-challenge#readme"
 }
